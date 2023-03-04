@@ -1,9 +1,10 @@
-import React , {useState} from 'react'
+import React, {useState} from 'react'
 import TodoForm from './TodoForm'
 import Todo from './Todo'
 
 function TodoList() {
     const [todos , setTodos] =useState([]);
+    const [searchKeyword, setSearchKeyword] = useState('');
 
     const addTodo = (todo) => {
         if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -25,7 +26,6 @@ function TodoList() {
         setTodos(removedArr);
     };
     
-    
     const completeTodo = id => {
         let updatedTodos = todos.map(todo => {
             if (todo.id === id) {
@@ -35,13 +35,24 @@ function TodoList() {
     });
     setTodos(updatedTodos);
     };  
-  return (
-    <div>
-        <h1>What's the Plan for today ?</h1>
-        <TodoForm onSubmit = {addTodo}/>
-        <Todo todos = {todos} completeTodo = {completeTodo} removeTodo= {removeTodo} updateTodo={updateTodo}/>    
-    </div>
-  )
+
+    const handleSearchChange = e => {
+        setSearchKeyword(e.target.value);
+    };
+
+    const filteredTodos = todos.filter(todo => todo.text.toLowerCase().includes(searchKeyword.toLowerCase()));
+
+    return (
+        <div>
+            <h1>What's the Plan for today ?</h1>
+            <TodoForm onSubmit = {addTodo}/>
+            <div>
+                <input type="text" placeholder="Search" value={searchKeyword} className='todo-input' onChange={handleSearchChange} />
+                <button className='todo-button'>Search</button>
+            </div>
+            <Todo todos = {filteredTodos} completeTodo = {completeTodo} removeTodo= {removeTodo} updateTodo={updateTodo}/>    
+        </div>
+    )
 }
 
 export default TodoList
