@@ -193,27 +193,27 @@ h1 {
     }
     }
     
-    @media screen and (max-width: 375px) {
-    h1 {
-    font-size: 18px;
-    }
-    
-    .todo-input {
-    padding: 10px 24px 10px 10px;
-    font-size: 12px;
-    }
-    
-    .todo-button {
-    padding: 10px;
-    font-size: 12px;
-    }
-    
-    .todo-row {
-    padding: 10px;
-    font-size: 12px;
-    }
-    
-    .icons {
-    font-size: 18px;
-    }
-    }
+  @media screen and (max-width: 375px) {
+  h1 {
+  font-size: 18px;
+  }
+  
+  .todo-input {
+  padding: 10px 24px 10px 10px;
+  font-size: 12px;
+  }
+  
+  .todo-button {
+  padding: 10px;
+  font-size: 12px;
+  }
+  
+  .todo-row {
+  padding: 10px;
+  font-size: 12px;
+  }
+  
+  .icons {
+  font-size: 18px;
+  }
+  }
